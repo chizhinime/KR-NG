@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1075,5 +1074,35 @@
             }
             
             // Update active nav link based on scroll position
-          
+          const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+            
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                
+                if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    document.querySelector(`.nav-links a[href="#${sectionId}"]`)?.classList.add('active');
+                    
+                    document.querySelectorAll('.page-nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    document.querySelector(`.page-nav a[href="#${sectionId}"]`)?.classList.add('active');
+                }
+            });
+        });
+        
+        // Initialize page nav visibility
+        window.dispatchEvent(new Event('scroll'));
+        
+        // Simulate loading of events (in a real app, this would be an API call)
+        console.log('TechBridge KR-NG loaded successfully!');
+        console.log('This is a static prototype for GKS project submission.');
+    </script>
+</body>
+</html>
    
