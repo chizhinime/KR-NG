@@ -1,0 +1,718 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBridge KR-NG | Connecting Nigerian & Korean Tech Communities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1a365d;
+            --accent-red: #c53030;
+            --accent-red-light: #fed7d7;
+            --neutral-light: #f7fafc;
+            --neutral-gray: #e2e8f0;
+            --neutral-dark: #2d3748;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #2c5282;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-red);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background-color: #9b2c2c;
+            transform: translateY(-2px);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .logo-icon {
+            color: var(--accent-red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-red);
+        }
+
+        .active {
+            color: var(--accent-red) !important;
+            font-weight: 600 !important;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--neutral-gray);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            margin-bottom: 20px;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* Why TechBridge Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Events Section */
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .country-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-red-light);
+            color: var(--accent-red);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .event-date {
+            color: var(--accent-red);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background-color: var(--neutral-light);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta h2 {
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background-color: var(--neutral-light);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--neutral-gray);
+            background-color: var(--white);
+            font-family: 'Inter', sans-serif;
+            min-width: 150px;
+        }
+
+        /* Community Profiles */
+        .profiles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .profile-card {
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--neutral-gray);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--text-secondary);
+        }
+
+        .profile-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .profile-country {
+            color: var(--accent-red);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background-color: var(--neutral-light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .profile-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .profile-links a {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .profile-links a:hover {
+            color: var(--accent-red);
+        }
+
+        /* Opportunities List */
+        .opportunities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .opportunity-item {
+            padding: 25px;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .opportunity-item h3 {
+            color: var(--primary-blue);
+        }
+
+        .opportunity-organizer {
+            color: var(--accent-red);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        /* Guide Content */
+        .guide-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guide-section {
+            margin-bottom: 40px;
+        }
+
+        .guide-section h3 {
+            color: var(--primary-blue);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--neutral-gray);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--neutral-gray);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-red-light);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--neutral-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Page Navigation */
+        .page-nav {
+            display: none;
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background-color: var(--white);
+            box-shadow: var(--shadow-lg);
+            border-radius: 10px;
+            padding: 15px 10px;
+            z-index: 99;
+        }
+
+        .page-nav a {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .page-nav a:hover, .page-nav a.active {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .page-nav i {
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow);
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-select {
+                width: 100%;
+            }
+            
+            .page-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-bridge logo-icon"></i>
+                <span>TechBridge KR-NG</span>
+            </div>
+            
+            <nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="#home" class="active">Home</a>
+                    <a href="#events">Events</a>
+                    <a href="#community">Community</a>
+                    <a href="#korea">Korea Tech</a>
+                    <a href="#guide">Collaboration Guide</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Navigation (for quick access) -->
+    <div class="page-nav" id="pageNav">
+        <a href="#home" class="active" title="Home">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="#events" title="Events">
+            <i class="fas fa-calendar-alt"></i>
+        </a>
+        <a href="#community" title="Community">
+            <i class="fas fa-users"></i>
+        </a>
+        <a href="#korea" title="Korea Tech">
+            <i class="fas fa-flag"></i>
+        </a>
+        <a href="#guide" title="Guide">
+            <i class="fas fa-book"></i>
+        </a>
+    </div>
+
+    <!-- Homepage -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>Connecting Nigerian & Korean Tech Communities</h1>
+                <p>Discover hackathons, tech events, and collaboration opportunities across Korea and Nigeria. Join a growing network of innovators, developers, and tech enthusiasts bridging two vibrant tech ecosystems.</p>
+                <div class="hero-buttons">
+                    <a href="#events" class="btn btn-accent">Explore Events</a>
+                    <a href="#community" class="btn btn-secondary">Join Community</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why TechBridge Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Why TechBridge KR-NG?</h2>
+                <div class="features">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-globe-asia"></i>
+                        </div>
+                        <h3>Cross-border Collaboration</h3>
+                        <p>Facilitate meaningful partnerships between Korean and Nigerian tech companies, startups, and innovators to solve global challenges.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Access to Hackathons & Events</h3>
+                        <p>Get information about upcoming tech events, hackathons, and conferences in both countries with opportunities for remote participation.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Connect with Global Tech Talents</h3>
+                        <p>Network with developers, designers, entrepreneurs, and tech leaders from both ecosystems to exchange knowledge and build together.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Events -->
+        <section class="section" id="events">
+            <div class="container">
+                <h2 class="section-title">Featured Events & Hackathons</h2>
+                
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label for="countryFilter">Country</label>
+                        <select id="countryFilter" class="filter-select">
+                            <option value="all">All Countries</option>
+                            <option value="korea">Korea 🇰🇷</option>
+                            <option value="nigeria">Nigeria 🇳🇬</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="typeFilter">Event Type</label>
+                        <select id="typeFilter" class="filter-select">
+                            <option value="all">All Types</option>
+                            <option value="hackathon">Hackathon</option>
+                            <option value="conference">Conference</option>
+                            <option value="meetup">Meetup</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="modeFilter">Mode</label>
+                        <select id="modeFilter" class="filter-select">
+                            <option value="all">All Modes</option>
+                            <option value="online">Online</option>
+   
